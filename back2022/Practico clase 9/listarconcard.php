@@ -42,9 +42,11 @@
         while ($reg = mysqli_fetch_array($datos)) {?>
           <div class="card col-sm-12 col-md-6 col-lg-3">
              <img class="card-img-top" src="data:image/jpg;base64, <?php echo base64_encode($reg['Imagen'])?>" alt="" width="100px" height="100px")> 
-
+        
               <h3 class="card-title" style="width: 100%; font-size:25px;"><?php echo ucwords($reg['Marca']) ?></h3>
+             
               <span>$ <?php echo $reg['Precio']; ?></span>
+              <a href="borrar.php?id=<?php echo $reg['id'];?>">Borrar</a>
 
           </div>
 
