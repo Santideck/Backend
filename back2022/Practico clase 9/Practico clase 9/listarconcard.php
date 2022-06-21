@@ -18,6 +18,8 @@
   <buton type="submit"><a href="Supreme.php">Supreme<a></buton>
   <buton type="submit"><a href="Filtrar.php">Filtrar<a></buton>
   <buton type="submit"><a href="agregar.html">Agregar<a></buton>
+ 
+  
   
    <h2>Lista de ropa</h2>
   <p>La siguiente lista muestra los datos de la ropa actualmente en stock.</p>
@@ -47,6 +49,7 @@
              
               <span>$ <?php echo $reg['Precio']; ?></span>
               <a href="borrar.php?id=<?php echo $reg['id'];?>">Borrar</a>
+              <a href="modificar.php?id=<?php echo $reg['id'];?>">Modificar</a>
 
           </div>
 

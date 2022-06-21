@@ -29,7 +29,7 @@ $datos=mysqli_fetch_array($repuesta);
     <body>
         <?php
         // 6) asignamos a diferentes variables los respectivos valores del array $datos.
-        $tipo_prenda=$datos["Tipo de Prenda"];
+        $tipo_prenda=$datos["tipo_prenda"];
         $marca=$datos["Marca"];
         $talle=$datos["Talle"];
         $precio=$datos["Precio"];
@@ -38,7 +38,7 @@ $datos=mysqli_fetch_array($repuesta);
         <p>Ingrese los nuevos datos de la prenda.</p>
         <form action="" method="post" enctype="multipart/form-data">
             <label>Tipo de prenda</label>
-            <input type="text" name="Tipo de Prenda" placeholder="Tipo de Prenda" value="<?php echo "$tipo_prenda"; ?>">
+            <input type="text" name="tipo_prenda" placeholder="tipo_prenda" value="<?php echo "$tipo_prenda"; ?>">
             <label>Marca</label>
             <input type="text" name="Marca" placeholder="Marca" value="<?php echo "$marca"; ?>">
             <label>Talle</label>
@@ -48,7 +48,7 @@ $datos=mysqli_fetch_array($repuesta);
             <label>Imagen</label>
             <input type="file" name="Imagen" placeholder="Imagen">
             <input type="submit" name="guardar_cambios" value="Guardar Cambios">
-            <button type="submit" name="Cancelar" formaction="index.html">Cancelar</button>
+            <button type="submit" name="Cancelar" formaction="listarconcard.php">Cancelar</button>
         </form>
         <?php
         // Si en la variable constante $_POST existe un indice llamado 'guardar_cambios' ocurre el bloque de instrucciones.
@@ -57,7 +57,7 @@ $datos=mysqli_fetch_array($repuesta);
             // a) generar variables para cada dato a almacenar en la bbdd
             // Si se desea almacenar una imagen en la base de datos usar lo siguiente:
             // addslashes(file_get_contents($_FILES['ID NOMBRE DE LA IMAGEN EN EL FORMULARIO']['tmp_name']))
-            $TipodePrenda=$_POST['TipodePrenda'];
+            $tipo_prenda=$_POST['tipo_prenda'];
             $Marca=$_POST['Marca'];
             $Talle=$_POST['Talle'];
             $Precio=$_POST['Precio'];
@@ -65,12 +65,12 @@ $datos=mysqli_fetch_array($repuesta);
             // 3') Preparar la orden SQL
             // "UPDATE tabla SET campo1='valor1', campo2='valor2', campo3='valor3', campo3='valor3', campo3='valor3' WHERE campo_clave=valor_clave"
             // a) generar la consulta a realizar
-             $consulta = "UPDATE ropa SET TipodePrenda='$TipodePrenda', Marca='$Marca', Talle='$Talle', Precio='$Precio', Imagen='$Imagen' WHERE id=$id";
+             $consulta = "UPDATE mercadería SET tipo_prenda='$tipo_prenda', Marca='$Marca', Talle='$Talle', Precio='$Precio', Imagen='$Imagen' WHERE id=$id";
             // 4') Ejecutar la orden y actualizamos los datos
             // a) ejecutar la consulta
             mysqli_query($conexion,$consulta);
             // a) rederigir a index
-            header('location: index.html');
+            header('location: listarconcard.php');
           } ?>
 
     </body>
